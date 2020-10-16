@@ -1,0 +1,46 @@
+body, html{
+	height:100%; 
+   
+}
+body{
+	display: flex;
+  	flex-direction: column;
+	padding-top:45px;
+}
+
+#icon{
+	font-size:2em;
+}
+.container.main{
+	margin-top: 7em;
+}
+#delete{
+	display:inline;
+}
+.wrapper {
+  /* min-height: 100%;
+
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+ 	flex: 1 0 auto;
+	
+}
+/* .site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1;
+} */
+.ui.inverted.vertical.footer.segment.form-page {
+    background-color: #212121;
+	
+	flex-shrink: 0;
+	bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+	
+}
