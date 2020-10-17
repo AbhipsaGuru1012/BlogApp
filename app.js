@@ -5,7 +5,12 @@ var express=require("express"),
 	methodOverride=require("method-override"),
 	expressSanitizer=require("express-sanitizer")
 
-mongoose.connect('mongodb://localhost/blog_app', {
+// mongoose.connect('mongodb://localhost/blog_app', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// })
+
+mongoose.connect('mongodb+srv://Abhipsa:abhipsa123@wildernessexperience.apptb.mongodb.net/yelp_camp?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
