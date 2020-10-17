@@ -5,10 +5,7 @@ var express=require("express"),
 	methodOverride=require("method-override"),
 	expressSanitizer=require("express-sanitizer")
 
-// mongoose.connect('mongodb://localhost/blog_app', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// })
+
 
 mongoose.connect('mongodb+srv://Abhipsa:abhipsa123@wildernessexperience.apptb.mongodb.net/yelp_camp?retryWrites=true&w=majority', {
   useNewUrlParser: true,
@@ -33,7 +30,7 @@ var Blog=new mongoose.model("Blog", blogSchema);
 app.get("/",function(req,res){
 	res.redirect("/blogs");
 })
-//Index Route
+
 app.get("/blogs",function(req, res){
 	Blog.find({},function(err, blogs){
 		if(err){
@@ -44,24 +41,24 @@ app.get("/blogs",function(req, res){
 	})
 	
 })
-//New Route
+
 app.get("/blogs/new",function(req, res){
 	res.render("new");
 })
-//Create Route
+
 app.post("/blogs",function(req, res){
 	req.body.blog.body=req.sanitize(req.body.blog.body)
-	//create blog
+	
 	Blog.create(req.body.blog,function(err, newBlog){
 		if(err){
 			res.render("new");
 		}else{
-			//redirect to index
+			
 			res.redirect("/blogs")
 		}
 	})
 })
-//Show route
+
 app.get("/blogs/:id",function(req, res){
 	Blog.findById(req.params.id, function(err, foundBlog){
 		if(err){
@@ -71,7 +68,7 @@ app.get("/blogs/:id",function(req, res){
 		}
 	})
 })
-//Edit route
+
 app.get("/blogs/:id/edit",function(req,res){
 	Blog.findById(req.params.id,function(err,foundBlog){
 		if(err){
@@ -82,7 +79,7 @@ app.get("/blogs/:id/edit",function(req,res){
 	})
 	
 })
-//Update Route
+
 app.put("/blogs/:id",function(req, res){
 	req.body.blog.body=req.sanitize(req.body.blog.body)
 	Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
@@ -93,9 +90,9 @@ app.put("/blogs/:id",function(req, res){
 		}
 	})
 })
-//Delete Route
+
 app.delete("/blogs/:id",function(req, res){
-	Blog.findByIdAndRemove(req.params.id, function(err){//we don't need another parameter as it simply deletes the blog. We don't need to do anything with it
+	Blog.findByIdAndRemove(req.params.id, function(err){
 		if(err){
 			res.redirect("/blogs");
 		}else{
