@@ -1,13 +1,16 @@
+require('dotenv').config();
+
 var express=require("express"),
 	app=express(),
 	mongoose=require("mongoose"),
 	bodyParser=require("body-parser");
 	methodOverride=require("method-override"),
-	expressSanitizer=require("express-sanitizer")
+	expressSanitizer=require("express-sanitizer"),
+	dbUrl=process.env.DB_URL;
 
 
 
-mongoose.connect('mongodb+srv://Abhipsa:abhipsa123@wildernessexperience.apptb.mongodb.net/yelp_camp?retryWrites=true&w=majority', {
+mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
